@@ -4,7 +4,7 @@ var path = require('path');
 module.exports = {
   entry: [
     'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000',
-    path.resolve(__dirname, 'client/components/App.jsx')
+    path.resolve(__dirname, 'client/index.jsx')
   ],
   output: {
     path: path.resolve(__dirname, 'client'),
