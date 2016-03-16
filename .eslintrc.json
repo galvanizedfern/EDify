@@ -1,0 +1,34 @@
+{
+    "env": {
+        "es6": true,
+        "node": true
+    },
+    "parserOptions": {
+        "ecmaFeatures": {
+            "experimentalObjectRestSpread": true,
+            "jsx": true
+        },
+        "sourceType": "module"
+    },
+    "plugins": [
+        "react"
+    ],
+    "rules": {
+        "indent": [
+            "error",
+            2
+        ],
+        "curly": [
+            "error",
+            "all"
+        ],
+        "quotes": [
+            1,
+            "single"
+        ],
+        "semi": [
+            "error",
+            "always"
+        ]
+    }
+}
