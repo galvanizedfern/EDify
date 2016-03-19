@@ -6,9 +6,9 @@ import { fetchVideoList } from '../actions/actions.jsx';
 import $ from 'jquery';
 
 //Component Code
-export default class HomePage extends Component {
+export class HomePage extends Component {
 
-	componentWillMount(){
+	componentDidMount(){
 	    console.log('willMount');
 	    this.props.fetchVideos();
 	}

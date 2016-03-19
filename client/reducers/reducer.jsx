@@ -18,8 +18,9 @@ const VideoList = (state = {}, action) => {
 	var newstate = Object.assign({}, state);
 	switch (action.type) {
 		case 'FETCH_VIDEOS':
-			console.log("fetching videos");
+			console.log("fetching videos:", action.videos);
       newstate.videos = action.videos;
+      return newstate;
     case 'RECEIEVED_VIDEOS':
       console.log("from reducer received: ",action.videos);
       newstate.videos = action.videos;
@@ -56,13 +57,14 @@ const UserInfo = (state = {}, action) => {
 }
 
 const User = (state = {}, action) => {
-  var newState = Object.assign({},state);
+  var newstate = Object.assign({},state);
   switch(action.type) {
     case 'CHANGE_USER':
       console.log('from reducer: ', action.user);
-      newState.user = action.user;
+      newstate.user = action.user;
+      return newstate;
     default:
-      return newState;
+      return state;
   }
 }
 

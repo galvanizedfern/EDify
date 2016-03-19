@@ -8,7 +8,7 @@ import IconButton from 'material-ui/lib/icon-button';
 export default function SearchBar ({onSubmit}) {
   return (
     <div>
-      <TextField hintText="Search" ref='search'/>
+      <TextField hintText="Search" />
       <IconButton iconClassName="material-icons md-24" onClick={() => console.log('it worked')}>search</IconButton>
     </div>
   );
