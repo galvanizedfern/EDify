@@ -38,3 +38,6 @@ SampleVideos
 # Webpack Bundle + Map
 client/bundle.js
 client/bundle.js.map
+
+# AWS access keys
+server/config/aws-config.json
