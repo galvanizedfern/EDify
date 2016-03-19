@@ -45,14 +45,13 @@ class NavBar extends Component {
         <ToolbarGroup firstChild={true} float="left">
           <ToolbarTitle text="Virtuoso" />
         </ToolbarGroup>
-        <ToolbarGroup>
-          <TextField hintText="Search" />
-          <IconButton iconClassName="material-icons md-24">search</IconButton>
-        </ToolbarGroup>
         <ToolbarGroup float="right">
-          <FontIcon className="muidocs-icon-custom-sort" />
           <ToolbarSeparator />
           <RaisedButton label="Sign In" primary={true} />
+          <RaisedButton label="Sign Up" primary={true} />
+        </ToolbarGroup>
+        <ToolbarGroup float="right" style={{width: "35%"}}>
+          <SearchBar />
         </ToolbarGroup>
       </Toolbar>
     );

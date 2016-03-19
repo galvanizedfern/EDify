@@ -23,8 +23,12 @@ module.exports = {
 
   fetchAll: function (req, res) {
     console.log("inside fetchAll");
-    db.Video.findAll().then(function(videos){
+    db.Video.findAll({})
+    .then(function(videos){
       res.send(videos);
+    })
+    .catch(function(err) {
+      console.log(err);
     });
   }
 };
