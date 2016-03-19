@@ -32,7 +32,6 @@ const mapDispatchToProps = (dispatch) => {
       })
     },
     goHome: () => {
-      console.log('Going home');
       window.location = '/#/';
     }
   }
@@ -42,7 +41,7 @@ class NavBar extends Component {
     return (
       <Toolbar>
         <ToolbarGroup firstChild={true} float="left">
-          <ToolbarTitle text="Virtuoso" />
+          <ToolbarTitle text="Virtuoso" style={{cursor: 'pointer'}} onClick={() => this.props.goHome()}/>
         </ToolbarGroup>
         <ToolbarGroup float="right">
           <ToolbarSeparator />
