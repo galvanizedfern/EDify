@@ -9,9 +9,8 @@ module.exports = {
   },
   // Handles fetching of specified video from S3 storage
   fetchVideo: function (req, res) {
-    console.log("inside fetchVideo req:", req.body.title);
-    var reqArr = req.body.title.split(" ");
-    db.Video.findAll({where: {title: {$like : '%' + reqArr[0] + '%'}}}).then(function(videos){
+    var query = req.body.query;
+    db.Video.findAll({where: {title: {$like : '%' + query + '%'}}}).then(function(videos){
       console.log("videos:", videos);
       res.send(videos);
     });
