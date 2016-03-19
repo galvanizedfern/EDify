@@ -21,25 +21,19 @@ class SearchBar extends Component {
       } = this.props;
 
     return (
-      <form onSubmit={handleSubmit}>
-       
-        <div>
-          <label>Title</label>
-          <div>
-            <input type="text" placeholder=" Title" {...title}/>
-          </div>
+      <form className='searchForm' onSubmit={handleSubmit}>
+        <label className='searchTitle'>Search:</label>
+        <div className='searchField'>
+          <input type="text" placeholder=" Title" {...title}/>
         </div>
-        <div>
-          <label>Mentor</label>
-          <div>
-            <input type="text" placeholder="Mentor" {...mentor}/>
-          </div>
+        <div className='searchField'>
+          <input type="text" placeholder="Mentor" {...mentor}/>
         </div>
-        <div>
-          <button type="submit" disabled={submitting}>
+        <div className='searchField'>
+          <button type="submit" className='searchField' disabled={submitting}>
             {submitting ? <i/> : <i/>} Submit
           </button>
-          <button type="button" disabled={submitting} onClick={resetForm}>
+          <button type="button" className='searchField' disabled={submitting} onClick={resetForm}>
             Clear Values
           </button>
         </div>

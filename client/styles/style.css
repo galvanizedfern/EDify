@@ -90,6 +90,50 @@ body {
   max-height: 100%;
 }
 
-#NavBar {
-  border: 4pm solid #73AD21;
+/* =============== NavBar ================ */
+
+.navContent {
+  display: inline;
 }
+
+.navBar {
+  background-color: #C1E1A6;
+}
+
+.authBox {
+  display: inline;
+  float: right;
+}
+
+
+.searchForm {
+  padding-bottom: 20px;
+}
+
+.searchTitle {
+  font-size: 20px;
+}
+
+.navLeft {
+  display: inline;
+  float: left;
+  width: 20%;
+}
+
+.navMiddle {
+  display: inline;
+  width: 50%;
+}
+
+.navRight {
+  display: inline;
+  width:30%;
+}
+
+.searchIcon {
+  background-image: 
+}
+
+
+
+

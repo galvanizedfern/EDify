@@ -14,6 +14,8 @@ import logger from 'redux-logger';
 import ReduxPromise from 'redux-promise';
 import VideoAppHandler from './reducers/reducer.jsx';
 import injectTapEventPlugin from 'react-tap-event-plugin';
+
+// Necessary to use materialUI
 injectTapEventPlugin();
 
 let store = createStore(VideoAppHandler, applyMiddleware(ReduxPromise, thunk, logger()));
@@ -27,7 +29,7 @@ export default class App extends Component {
   render(){
     return (
       <div id="app-view">  
-          <div><NavBar/></div>
+          <div className='navBar'><NavBar/></div>
           {this.props.children}
       </div>
     )	
