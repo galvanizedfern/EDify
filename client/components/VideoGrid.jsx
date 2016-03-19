@@ -2,17 +2,41 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import VideoListEntry from './VideoListEntry.jsx';
 import { changeCurrentVideo } from '../actions/actions.jsx';
+import GridList from 'material-ui/lib/grid-list/grid-list';
+import GridTile from 'material-ui/lib/grid-list/grid-tile';
 
 
 //Component code
 export function VideoGrid({ videos , selectVideo}) {
+  const styles = {
+  root: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'space-around',
+ 
+  },
+  gridList: {
+    width: 1200,
+    height: 500,
+    overflowY: 'auto',
+    marginBottom: 15,
+   
+  },
+};
 	
 	if(videos){
 		return (
-			<div className = 'videoGrid'>
-				{ videos.map(function(video){
-						return <VideoListEntry video = {video} selectVideo = {selectVideo}/>;
-				})}
+			<div id= "sheet" style={styles.root}>
+        <GridList cellHeight={220} style={styles.gridList} cols= {3} padding= {5} >
+				
+        { videos.map(function(video){
+          
+          return <GridTile onClick = {() => selectVideo(video)} key = {video.cover} 
+          title = {video.title} subtitle= {<span>by <b>{video.description}</b></span>}>
+          <img src={video.cover}  /></GridTile>;
+				
+        })}
+        </GridList>
 			</div>	
 		);	
 	}else{
@@ -21,6 +45,7 @@ export function VideoGrid({ videos , selectVideo}) {
 		)
 	}
 }
+
 
 //Container Code
 const mapStateToProps = (state) => {
@@ -44,5 +69,5 @@ export default connect(
   mapDispatchToProps
 )(VideoGrid);
 
-
+// video = {video} selectVideo = {selectVideo}
 

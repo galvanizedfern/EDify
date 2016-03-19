@@ -7,7 +7,16 @@
   width: 75%  /* Or whatever */
   margin: auto; 
 }
-
+#sheet {
+  background-color : white;
+  width : 1200px;
+  height: 700px;
+  padding: 20px;
+  margin:auto;
+}
+#HomePage {
+background-color : #eeeeee;
+}
 #featured {
 	width: 100px;  /* Or whatever */
   height: 100px; /* Or whatever */

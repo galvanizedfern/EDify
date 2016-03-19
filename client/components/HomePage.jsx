@@ -17,8 +17,8 @@ export default class HomePage extends Component {
   	//this.props.fetchVideos();
   	return (
   	  <div id = "HomePage">
-	  	<div id = 'box'><Featured /></div>
-  	  	<div id = 'box'><VideoGrid /></div>
+  	  	<div id = 'box'><Featured /></div>
+    	  <div ><VideoGrid /></div>
   	  </div>
   	);
   }
