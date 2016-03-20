@@ -50,6 +50,14 @@ render((
   </Provider>
 ), document.getElementById('app'));
 
+   // var style = {
+   //    'backgroundImage': (`url('${currentVideo.cover}')`),
+   //    'backgroundSize': 'cover',
+   //    'backgroundRepeat': 'no-repeat',
+   //    'backgroundPosition': '40%',
+   //    'height': '100%'
+   //  };
+
 
 // =======Original working AppContainer component=======
 

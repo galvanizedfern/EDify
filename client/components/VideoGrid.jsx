@@ -27,7 +27,7 @@ export function VideoGrid({ videos , selectVideo}) {
 	if(videos){
 		return (
 			<div id= "sheet" style={styles.root}>
-        <GridList cellHeight={220} style={styles.gridList} cols= {3} padding= {5} >
+        <GridList cellHeight={220} style={styles.gridList} cols= {4} padding= {5} >
 				
         { videos.map(function(video){
           
@@ -71,3 +71,10 @@ export default connect(
 
 // video = {video} selectVideo = {selectVideo}
 
+   // var style = {
+   //    'backgroundImage': (`url('${currentVideo.cover}')`),
+   //    'backgroundSize': 'cover',
+   //    'backgroundRepeat': 'no-repeat',
+   //    'backgroundPosition': '40%',
+   //    'height': '100%'
+   //  };
