@@ -7,7 +7,6 @@ import $ from 'jquery';
 //Component Code
 export default function PlayerPage({currentVideo}) {
   console.log(currentVideo);
-
   if(currentVideo){
 
     return(

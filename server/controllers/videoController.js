@@ -11,7 +11,6 @@ module.exports = {
   fetchVideo: function (req, res) {
     var query = req.body.query;
     db.Video.findAll({where: {title: {$like : '%' + query + '%'}}}).then(function(videos){
-      console.log("videos:", videos);
       res.send(videos);
     });
   },
@@ -21,7 +20,6 @@ module.exports = {
   },
 
   fetchAll: function (req, res) {
-    console.log("inside fetchAll");
     db.Video.findAll({})
     .then(function(videos){
       res.send(videos);

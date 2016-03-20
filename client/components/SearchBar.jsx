@@ -8,7 +8,6 @@ import IconButton from 'material-ui/lib/icon-button';
 export default class SearchBar extends Component {
 
   render() {
-    console.log(this.props);
     return (
       <div>
         <TextField ref='search' hintText="Search" />
