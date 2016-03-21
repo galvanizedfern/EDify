@@ -30,15 +30,42 @@
   height: 340px;
   margin: auto;
   padding: 30px;
-  margin-top: 25px;*/
+  margin-top: 25px;
   /*display: flex;*/
  /*align-items: center;*/*/
 }
+
 #HomePage {
 background-color : #eeeeee;
 padding: 10px 0px 30px 0px;
 }
+#PlayerPage {
+background-color : #eeeeee;
+padding: 30px 20px 20px 20px;
+}
+#Playercover {
+  background-color : white;
+  width : 1200px;
+  height: 700px;
+  padding-left: 100px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  margin:auto;
+  margin-bottom: 40px;
 
+}
+
+#description {
+  background-color : white;
+  margin-top: 20px;
+  padding-left: 100px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  width : 1200px;
+  height: 200px;
+  margin:auto;
+
+}
 /*#featured {
 	width: 200px;   Or whatever 
   height: 200px;  
@@ -96,6 +123,7 @@ body {
   max-height: 200px;
   border: 3px solid black;
   margin-left: 70px;
+
   
 }
 /*img {
