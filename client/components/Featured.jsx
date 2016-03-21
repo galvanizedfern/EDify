@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import Video from 'react-html5video';
+import Card from 'material-ui/lib/card/card';
+import CardMedia from 'material-ui/lib/card/card-media';
+import CardTitle from 'material-ui/lib/card/card-title';
 
   
 
@@ -20,14 +23,15 @@ export default function Featured({videos}) {
 	  return(
 	  	
       <div id = 'HomePage'>
-        <div id = 'sheett'>
-        <div id = 'cover'>
-          <div className = 'fill'><img src = {currentVideo.cover} /></div>
+        <div id = 'cardCover'>
+          <div id= 'inner'>
+            <Card >
+              <CardMedia
+                overlay={<CardTitle title={currentVideo.title} subtitle={currentVideo.description} />}>
+                <img src={currentVideo.cover} />
+              </CardMedia>
+            </Card>
           </div>
-  	      <div id= 'descriptionBox'>
-          <h3>{currentVideo.title}</h3>
-  	      <h4>{currentVideo.description}</h4>
-        </div>
         </div>
 	  	</div>	
   	);	
@@ -59,4 +63,9 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(Featured);
-
+// <div id = 'cover'>
+//  <div className = 'fill'><img src = {currentVideo.cover} /></div>
+//           </div>
+//           <div id= 'descriptionBox'>
+//           <h3>{currentVideo.title}</h3>
+//           <h4>{currentVideo.description}</h4>

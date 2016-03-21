@@ -12,7 +12,7 @@ export default function PlayerPage({currentVideo}) {
 
     return(
 
-      <div id = 'PlayerPage'>
+    <div id = 'PlayerPage'>
       <div id = 'Playercover'>
         <Video width='900' height='auto' controls muted
 
@@ -22,12 +22,12 @@ export default function PlayerPage({currentVideo}) {
             <source src={currentVideo.url} type="video/mp4" />
            
         </Video>
-        </div>
-        <div id = 'description'>
+      </div>
+      <div id = 'description'>
         <h3>Title: {currentVideo.title}</h3>
         <h4>Description: {currentVideo.description}</h4>
-        </div>
-      </div>  
+      </div>
+    </div>  
     );  
   }else{
     return (

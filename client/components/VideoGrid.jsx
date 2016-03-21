@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
-import VideoListEntry from './VideoListEntry.jsx';
 import { changeCurrentVideo } from '../actions/actions.jsx';
 import GridList from 'material-ui/lib/grid-list/grid-list';
 import GridTile from 'material-ui/lib/grid-list/grid-tile';
