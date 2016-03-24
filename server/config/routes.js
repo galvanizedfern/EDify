@@ -27,9 +27,10 @@ module.exports = function(app, express) {
   // Handles adding a new video to the db
   app.post('/addVideo', videoController.addVideo);
 
-  //Load comments for current Video
+  // Load comments for current Video
   app.post('/loadComments', commentController.loadComments);
 
+  // Add new comment to db
   app.post('/addComment', commentController.addComment);
 
   //Handles adding about me on the profile page
