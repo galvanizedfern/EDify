@@ -10,8 +10,6 @@ export default class CommentSection extends Component {
 
   render() {
     var commentsFound;
-    console.log(this.props.comments);
-    console.log(typeof this.props.comments);
 
     // Comments is initially an empty object (before becoming an array of 
     // comment objects) so it must be verified as an array before trying to map it

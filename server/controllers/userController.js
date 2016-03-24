@@ -69,7 +69,6 @@ module.exports = {
 
 
   editAboutMe: function (req,res) {
-    console.log("reqis", req.body)
     db.User.findOne({where: {username: req.body.username}})
     .then(function(user) {
       console.log('User is:', user);
