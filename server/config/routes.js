@@ -4,7 +4,6 @@ var commentController = require('../controllers/commentController');
 var passport = require('./authentication').passport;
 var ensureAuthenticated = require('./authentication').ensureAuthenticated;
 
-console.log(videoController);
 module.exports = function(app, express) {
   // Handles request to sign up new user
   app.post('/signup', userController.userSignUp);
@@ -31,7 +30,7 @@ module.exports = function(app, express) {
   app.post('/loadComments', commentController.loadComments);
 
   // Add new comment to db
-  app.post('/addComment', commentController.addComment);
+  app.post('/addComment', ensureAuthenticated, commentController.addComment);
 
   //Handles adding about me on the profile page
   app.post('/aboutMe', userController.editAboutMe);
