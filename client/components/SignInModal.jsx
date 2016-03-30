@@ -1,19 +1,15 @@
-import React from 'react';
+import React, {Component} from 'react';
 import Dialog from 'material-ui/lib/dialog';
 import FlatButton from 'material-ui/lib/flat-button';
 import TextField from 'material-ui/lib/text-field';
-import RaisedButton from 'material-ui/lib/raised-button';
-import FloatingActionButton from 'material-ui/lib/floating-action-button';
-import ContentAdd from 'material-ui/lib/svg-icons/content/add';
 import {connect} from 'react-redux';
 import { signInUser, hideSignInModal, toggleSignInModal } from '../actions/actions.jsx';
 
-export default class SignInModal extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
+export default class SignInModal extends Component {
   render() {
+    var signIn = this.props.signIn;
+    var closeModal = this.props.closeModal;
+    var displaySignInModal = this.props.displaySignInModal;
 
     const customContentStyle = {
       width: 350,
@@ -24,12 +20,13 @@ export default class SignInModal extends React.Component {
       <FlatButton
         label='Cancel'
         secondary={true}
-        onClick={this.props.closeModal}
+        onClick={closeModal}
       />,
       <FlatButton
         label='Submit'
         onClick={() => {
-          this.props.signIn({username: this.refs.username.getValue(), password: this.refs.password.getValue()})
+          signIn({username: this.refs.username.getValue(), password: this.refs.password.getValue()});
+          closeModal();
         }}
       />
     ];
@@ -41,7 +38,7 @@ export default class SignInModal extends React.Component {
           actions={actions}
           modal={false}
           contentStyle={customContentStyle}
-          open={this.props.displaySignInModal === true}
+          open={displaySignInModal === true}
         >
           <TextField
           ref="username"
@@ -62,17 +59,14 @@ export default class SignInModal extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    displaySignInModal: state.displaySignInModal,
-    user: state.user
+    displaySignInModal: state.displaySignInModal
   }
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
     signIn: (user) => {
-      console.log('Signing in user')
       dispatch(signInUser(user))
-      dispatch(hideSignInModal())
     
     },
     closeModal: () => {
