@@ -46,13 +46,10 @@ passport.deserializeUser(function(id, done) {
 
 // Checks to make sure user is logged in before allowing route request to continue
 var ensureAuthenticated = function(req, res, next) {
-  console.log(req.isAuthenticated());
-  if (req.isAuthenticated()) {
+  if (req.session.userId) {
     return next();
   } else {
-    console.log('You need to log in first!');
     res.sendStatus(401);
-    // Redirects or does something else to indicate operation was unsuccessful 
   }
 };
 

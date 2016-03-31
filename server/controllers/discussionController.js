@@ -18,7 +18,6 @@ module.exports = {
     var videoID = req.body.videoID;
     var userID = req.body.userID;
     var username = req.body.username;
-    console.log(videoID);
     db.Feedback.create({feedback: feedback, username: username, VideoId: videoID, UserId: userID})
     .then(function() {
       res.sendStatus(201);
