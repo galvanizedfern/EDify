@@ -73,6 +73,8 @@ export const signInUser = (user) => {
     .then((data) => 
       {
         dispatch(changeUser(data));
+        dispatch(authError(null));
+        dispatch(hideSignInModal());
       }, (error) =>
       {
         dispatch(authError(error.responseText));

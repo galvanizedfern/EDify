@@ -59,7 +59,8 @@ export default class SignUpModal extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    displaySignUpModal: state.displaySignUpModal
+    displaySignUpModal: state.displaySignUpModal,
+    authError: state.authenticationError
   }
 };
 
