@@ -75,7 +75,7 @@ export const signInUser = (user) => {
         dispatch(changeUser(data));
       }, (error) =>
       {
-        dispatch(authenticationError(error.responseText));
+        dispatch(authError(error.responseText));
       });
   }
 };
@@ -99,14 +99,14 @@ export const signUpUser = (user) => {
         dispatch(changeUser(response));
       }, (error) =>
       {
-        dispatch(authenticationError(error.responseText));
+        dispatch(authError(error.responseText));
       });
   }
 };
 
-export const authenticationError = (error) => {
+export const authError = (error) => {
   return {
-    type: 'AUTHENTICATION_ERROR',
+    type: 'AUTH_ERROR',
     error: error
   }
 }
