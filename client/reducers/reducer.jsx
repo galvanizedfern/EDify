@@ -155,6 +155,15 @@ const VideoIsValidated = (state = {}, action) => {
   }
 }
 
+const AuthenticationError = (state = {}, action) => {
+  switch(action.type) {
+    case 'AUTHENTICATION_ERROR':
+      return action.error;
+    default:
+      return state;
+  }
+}
+
 const VideoAppHandler = combineReducers({
   currentVideo: CurrentVideo,
   videos: VideoList,
@@ -168,7 +177,8 @@ const VideoAppHandler = combineReducers({
   aboutMeEdit: ToggleAboutMeEdit,
   answerEdit: ToggleAnswerEdit,
   checkVideoDuration: CheckVideoDuration,
-  videoIsValidated: VideoIsValidated
+  videoIsValidated: VideoIsValidated,
+  authenticationError: AuthenticationError
 });
 
 export default VideoAppHandler;

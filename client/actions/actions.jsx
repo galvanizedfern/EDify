@@ -75,7 +75,7 @@ export const signInUser = (user) => {
         dispatch(changeUser(data));
       }, (error) =>
       {
-        console.log(error.responseText);
+        dispatch(authenticationError(error.responseText));
       });
   }
 };
@@ -99,10 +99,17 @@ export const signUpUser = (user) => {
         dispatch(changeUser(response));
       }, (error) =>
       {
-        console.log(error.responseText);
+        dispatch(authenticationError(error.responseText));
       });
   }
 };
+
+export const authenticationError = (error) => {
+  return {
+    type: 'AUTHENTICATION_ERROR',
+    error: error
+  }
+}
 
 export const addVideo = (video) => {
   return(dispatch) => {
