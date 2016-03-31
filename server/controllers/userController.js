@@ -1,5 +1,6 @@
 var db = require('../db');
 var bcrypt = require('bcrypt');
+var session = require('express-session');
 
 module.exports = {
   // Handles signing up a new user and adding them to the database
@@ -37,26 +38,38 @@ module.exports = {
 
   // Handles signing in an existing user and checking they entered the correct username/password
   userSignIn: function (req, res) {
+    var username = req.body.username;
+    var password = req.body.password;
 
-    // !!!!!!!!!!!!!! Passport replaces the need for any of the commented code below; keep for now to be safe !!!!!!!!!!!!!!!!!
+    db.User.findOne({where: {username: req.body.username}})
+    .then(function(user) {
+      if (!user) {
+        res.sendStatus(401, {error: 'username'}); 
+      }
+      bcrypt.compare(password, user.password, function(err, match) {
+        if (err) {
+          throw err;
+          res.sendStatus(500);
+        }
+        if (!match) {
+          res.send(401, {error: 'password'}); 
+        } else {
+          req.session.regenerate(function () {
+            req.session.userId = user.id;
+            var usr = user;
+            usr.password = "";
+            res.send(200, usr);
+          });
+        }
+      });
+    })
+    .catch(function(err) {
+      throw (err);
+      res.sendStatus(500);
+    });
 
-    // db.User.findOne({where: {username: req.body.username}})
-    // .then(function(user) {
-    //   if (!user) {
-    //     console.log("Username doesn't exist!");
-    //     res.sendStatus(401);
-    //   }
-    //   // TODO: Add password salting/hashing (Passport ?)
-    //   if (user.password === req.body.password) {
-    //     //Create new user session, redirect user to some other page (Welcome page ?)
-    //     res.sendStatus(200);
-    //   }
-    // })
-    // .catch(function(err) {
-    //   console.log(err);
-    // })
-    req.user.password = "";
-    res.send(req.user);
+    // req.user.password = "";
+    // res.send(req.user);
   },
 
   // Handles user signing out and removes their existing session
