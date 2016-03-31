@@ -73,6 +73,9 @@ export const signInUser = (user) => {
     .then((data) => 
       {
         dispatch(changeUser(data));
+      }, (error) =>
+      {
+        console.log(error.responseText);
       });
   }
 };
@@ -91,8 +94,12 @@ export const signUpUser = (user) => {
   return(dispatch) => {
     $.post('/signup', user)
     .then((response) => 
-      { dispatch(signInUser(user));
+      { 
+        dispatch(signInUser(user));
         dispatch(changeUser(response));
+      }, (error) =>
+      {
+        console.log(error.responseText);
       });
   }
 };

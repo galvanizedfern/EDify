@@ -8,7 +8,7 @@ module.exports = {
     db.User.findOne({where: {username: req.body.username}})
     .then(function(user) {
       if (user) {
-        res.sendStatus(200, {error: 'username-SignUp'}); 
+        res.sendStatus(401, 'username-SignUp'); 
       }
       bcrypt.hash(req.body.password, 10, function(err, hash) {
         if (err) {
@@ -20,7 +20,16 @@ module.exports = {
           password: hash,
         })
         .then(function(user) {
-          res.send(201, user);
+          req.session.regenerate(function (err) {
+            if (err) {
+              throw err;
+              res.sendStatus(500);
+            }
+            req.session.userId = user.id;
+            var usr = user;
+            usr.password = "";
+            res.send(200, usr);
+          });
         })
         .catch(function(err) {
           throw err;
@@ -42,7 +51,7 @@ module.exports = {
     db.User.findOne({where: {username: req.body.username}})
     .then(function(user) {
       if (!user) {
-        res.sendStatus(401, {error: 'username-SignIn'}); 
+        res.send(401, 'username-SignIn'); 
       }
       bcrypt.compare(password, user.password, function(err, match) {
         if (err) {
@@ -50,7 +59,7 @@ module.exports = {
           res.sendStatus(500);
         }
         if (!match) {
-          res.send(401, {error: 'password'}); 
+          res.send(401, 'password'); 
         } else {
           req.session.regenerate(function (err) {
             if (err) {
@@ -69,14 +78,11 @@ module.exports = {
       throw (err);
       res.sendStatus(500);
     });
-
-    // req.user.password = "";
-    // res.send(req.user);
   },
 
   // Handles user signing out and removes their existing session
   userSignOut: function (req, res) {
-    req.session.destroy(function() {
+    req.session.destroy(function(err) {
       if (err) {
         throw err;
         res.sendStatus(500);

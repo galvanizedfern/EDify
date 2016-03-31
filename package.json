@@ -47,8 +47,7 @@
     "request-promise": "^2.0.1",
     "sequelize": "^3.19.3",
     "sequelize-cli": "^2.3.1",
-    "underscore": "^1.8.3",
-    "video.js": "^5.8.0"
+    "underscore": "^1.8.3"
   },
   "devDependencies": {
     "babel-cli": "^6.6.5",
