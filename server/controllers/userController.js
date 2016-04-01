@@ -7,8 +7,9 @@ module.exports = {
   userSignUp: function (req, res) {
     db.User.findOne({where: {username: req.body.username}})
     .then(function(user) {
-      if (user) {
-        res.sendStatus(401, 'username-SignUp'); 
+      if (user !== null) {
+        res.send(401, 'username-SignUp'); 
+        return;
       }
       bcrypt.hash(req.body.password, 10, function(err, hash) {
         if (err) {
@@ -50,8 +51,9 @@ module.exports = {
 
     db.User.findOne({where: {username: req.body.username}})
     .then(function(user) {
-      if (!user) {
+      if (user === null) {
         res.send(401, 'username-SignIn'); 
+        return;
       }
       bcrypt.compare(password, user.password, function(err, match) {
         if (err) {
@@ -60,6 +62,7 @@ module.exports = {
         }
         if (!match) {
           res.send(401, 'password'); 
+          return;
         } else {
           req.session.regenerate(function (err) {
             if (err) {

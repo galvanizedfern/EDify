@@ -99,6 +99,8 @@ export const signUpUser = (user) => {
       { 
         dispatch(signInUser(user));
         dispatch(changeUser(response));
+        dispatch(authError(null));
+        dispatch(hideSignInModal());
       }, (error) =>
       {
         dispatch(authError(error.responseText));
