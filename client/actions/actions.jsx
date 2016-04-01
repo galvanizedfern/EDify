@@ -73,6 +73,11 @@ export const signInUser = (user) => {
     .then((data) => 
       {
         dispatch(changeUser(data));
+        dispatch(authError(null));
+        dispatch(hideSignInModal());
+      }, (error) =>
+      {
+        dispatch(authError(error.responseText));
       });
   }
 };
@@ -91,11 +96,24 @@ export const signUpUser = (user) => {
   return(dispatch) => {
     $.post('/signup', user)
     .then((response) => 
-      { dispatch(signInUser(user));
+      { 
+        dispatch(signInUser(user));
         dispatch(changeUser(response));
+        dispatch(authError(null));
+        dispatch(hideSignInModal());
+      }, (error) =>
+      {
+        dispatch(authError(error.responseText));
       });
   }
 };
+
+export const authError = (error) => {
+  return {
+    type: 'AUTH_ERROR',
+    error: error
+  }
+}
 
 export const addVideo = (video) => {
   return(dispatch) => {

@@ -66,12 +66,12 @@ class NavBar extends Component {
     margin: 10
   }
 
-  var noAuth =  <ToolbarGroup float="right" style={{paddingLeft: '500px'}}>
+  var noAuth =  <ToolbarGroup float="right">
                   <RaisedButton label="Sign In" backgroundColor='#C8E6C9' style={buttonStyles} onTouchTap={() => this.props.showSignInModal()}/>
                   <RaisedButton label="Sign Up" backgroundColor='#C8E6C9' style={buttonStyles} onTouchTap={() => this.props.showSignUpModal()}/>
                 </ToolbarGroup>
   
-  var Auth =    <ToolbarGroup float="right" style={{paddingLeft: '325px'}}>
+  var Auth =    <ToolbarGroup float="right">
                   <RaisedButton label="Upload Video" backgroundColor='#FFC107' style={buttonStyles} onTouchTap={() => this.props.showUploadModal()}/>
                   <RaisedButton label="Profile" backgroundColor='#C8E6C9' style={buttonStyles} onTouchTap={() => this.props.goProfile()}/>
                   <RaisedButton label="Sign Out" backgroundColor='#C8E6C9' style={buttonStyles} onTouchTap={() => this.props.signOut()}/>
@@ -87,7 +87,7 @@ class NavBar extends Component {
           <ToolbarTitle text="EDify" style={{cursor: 'pointer', color: 'white', fontSize: '30px', paddingLeft: '12px'}} onClick={() => this.props.goHome()}/>
         </ToolbarGroup>
           {this.props.user.username !== undefined ? Auth : noAuth }
-        <ToolbarGroup float="right" style={{width: "26%"}}>
+        <ToolbarGroup float="left" style={{width: "30%", paddingLeft: "100px"}}>
           <SearchBar handleSubmit={this.props.handleSubmit}/>
         </ToolbarGroup>
       </Toolbar>

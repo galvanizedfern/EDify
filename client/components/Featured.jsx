@@ -13,12 +13,8 @@ export default function Featured({videos, selectVideo}) {
 
 	if(Object.keys(videos).length !== 0){
     var vidLength = videos.length;
-    var currentVideo = videos[Math.floor(Math.random()*vidLength)];
-
-    var videoOptions = {
-      url: currentVideo.url,
-      poster: currentVideo.cover
-    };
+    var currentVideo1 = videos[Math.floor(Math.random()*vidLength)];
+    var currentVideo2 = videos[Math.floor(Math.random()*vidLength)];
 
 	  return(
 	  	
@@ -29,22 +25,22 @@ export default function Featured({videos, selectVideo}) {
           padding={0}
         >
         <GridTile
-          onClick = {() => selectVideo(currentVideo)}
+          onClick = {() => selectVideo(currentVideo1)}
           key={1}
-          title={currentVideo.title}
-          subtitle={'by ' + currentVideo.description}
+          title={currentVideo1.title}
+          subtitle={'by ' + currentVideo1.description}
           cols={1}
         >
-          <img src={currentVideo.cover} />
+          <img className='featuredVideo' src={currentVideo1.cover} />
         </GridTile>
         <GridTile
-          onClick = {() => selectVideo(currentVideo)}
+          onClick = {() => selectVideo(currentVideo2)}
           key={2}
-          title={currentVideo.title}
-          subtitle={'by ' + currentVideo.description}
+          title={currentVideo2.title}
+          subtitle={'by ' + currentVideo2.description}
           cols={1}
         >
-          <img src={currentVideo.cover} />
+          <img className='featuredVideo' src={currentVideo2.cover} />
         </GridTile>
         </GridList>
         </div>

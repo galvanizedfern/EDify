@@ -6,7 +6,6 @@ import DiscussionSection from './DiscussionSection.jsx';
 import GridList from 'material-ui/lib/grid-list/grid-list';
 import GridTile from 'material-ui/lib/grid-list/grid-tile';
 import { loadFeedback, loadQuestions } from '../actions/actions.jsx';
-import video from 'video.js';
 import $ from 'jquery';
 
 //Component Code
@@ -17,7 +16,7 @@ export class PlayerPage extends Component {
       this.props.loadQuestions(this.props.currentVideo.id);
   }
 
-  /**
+  /*
   shouldComponentUpdate{
 
   }
