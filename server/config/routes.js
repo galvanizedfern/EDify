@@ -18,7 +18,8 @@ module.exports = function(app, express) {
 
   // Handles fetching inital videos from db to populate video grid on home page
   app.get('/fetch', videoController.fetchAll);
-  
+ 
+
   // Handles fetching uploaded videos from db to populate video grid on profile page
   app.post('/fetch', videoController.fetchUserVideo);
   

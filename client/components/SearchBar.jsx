@@ -9,7 +9,7 @@ export default class SearchBar extends Component {
   render() {
     return (
       <div>
-        <TextField ref='search' style={{backgroundColor: '#f0f0f5', paddingLeft: '7px', height: '38px', marginTop: '18px'}} hintStyle={{paddingTop: '4px', height: '19px'}} underlineShow={false} hintText="Search..." />
+        <TextField ref='search' style={{backgroundColor: '#f0f0f5', paddingLeft: '7px', height: '38px', width: '350px' , marginTop: '15px'}} hintStyle={{paddingTop: '4px', height: '19px'}} underlineShow={false} hintText="Search..." />
         <IconButton iconClassName="material-icons md-24" style={{padding: '5px', paddingTop: '25px', position: 'absolute', float: 'right'}} onClick={() => this.props.handleSubmit(this.refs.search.getValue(), "title")}>search</IconButton>
       </div>
     );

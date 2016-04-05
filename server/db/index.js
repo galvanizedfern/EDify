@@ -18,7 +18,7 @@ var db = new Sequelize(
 var User = db.define('User', {
   username: {type: Sequelize.STRING, unique: true},
   password: Sequelize.STRING,
-  aboutMe:  {type: Sequelize.STRING, allowNull: false, defaultValue: ""}
+  aboutMe:  {type: Sequelize.STRING, allowNull: false, defaultValue: "Edit About Me"}
 });
 // Video's schema
 var Video = db.define('Video', {
@@ -26,6 +26,7 @@ var Video = db.define('Video', {
   description: Sequelize.STRING,
   url:Sequelize.STRING,
   cover:Sequelize.STRING,
+  userName: Sequelize.STRING,
   upVotes:Sequelize.INTEGER,
   downVotes:Sequelize.INTEGER
 });

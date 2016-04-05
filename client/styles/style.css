@@ -13,6 +13,7 @@
   padding: 40px;
   margin: 0px;
   padding-top: 5px;
+  padding-left: 120px;
 }
 #sheett {
   background-color : #8BC34A;
@@ -34,9 +35,33 @@
  /*align-items: center;*/*/
 }
 
+
 #PlayerPage {
 background-color : #f0f0f5;
 }
+
+.welcomeBackTitle {
+  padding-top: 5px;
+  margin-top: 5px;
+  padding-left: 12px;
+  font-family:'Raleway';
+  color: #303F9F ;
+  font-size: 20px;
+}
+
+#AboutMe {
+  padding: 0px 10px 10px 10px;
+  border:1px solid #303F9F ;
+  background-color: white;
+  height: 350px;
+  width: 230px;
+  margin: 10px
+  margin-right: 20px;
+  margin-left: 17px;
+  font-family:'Raleway';
+}
+
+
 
 #Playercover {
   background-color : #f0f0f5;
@@ -71,7 +96,9 @@ background-color : #f0f0f5;
  margin-bottom: 0px;
 
 }
-
+#tabs {
+  margin-left: 0px;
+}
 #inner {
  max-width: 100%;
  max-height: 100%;
@@ -262,14 +289,12 @@ div span.downvotes {
   background-color: #f0f0f5;
 }
 
+
 .feedback {
   background-color: white;
   width: 100%;
 }
 
-#attachmentVideo_html5_api {
-
-}
 
 .videoplayer {
   margin-left: 225px;
@@ -288,3 +313,8 @@ div span.downvotes {
   background-color: #f0f0f5;
   margin-bottom: 10px;
 }
+
+.Votes {
+  width: 25%;
+}
+

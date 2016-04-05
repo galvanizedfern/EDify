@@ -27,8 +27,9 @@ export default function Featured({videos, selectVideo}) {
         <GridTile
           onClick = {() => selectVideo(currentVideo1)}
           key={1}
+          style={{fontFamily: 'Raleway'}}
           title={currentVideo1.title}
-          subtitle={'by ' + currentVideo1.description}
+          subtitle={'by ' + currentVideo1.userName}
           cols={1}
         >
           <img className='featuredVideo' src={currentVideo1.cover} />
@@ -36,8 +37,10 @@ export default function Featured({videos, selectVideo}) {
         <GridTile
           onClick = {() => selectVideo(currentVideo2)}
           key={2}
+          style={{fontFamily: 'Raleway'}}
           title={currentVideo2.title}
-          subtitle={'by ' + currentVideo2.description}
+          style={{fontFamily: 'Raleway'}}
+          subtitle={'by ' + currentVideo2.userName}
           cols={1}
         >
           <img className='featuredVideo' src={currentVideo2.cover} />

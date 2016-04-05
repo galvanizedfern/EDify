@@ -137,6 +137,12 @@ const CheckVideoDuration = (state = {}, action) => {
     case 'STOP_VIDEO_DURATION_CHECK':
       videoCheck.checking = false;
       return videoCheck;
+    case 'START_UPLOAD_PROGRESS':
+      videoCheck.proccessing = true;
+      return videoCheck;
+    case 'STOP_UPLOAD_PROGRESS':
+      videoCheck.proccessing = false;
+      return videoCheck;
     default:
       return state;
   }
@@ -164,6 +170,15 @@ const AuthError = (state = {}, action) => {
   }
 }
 
+const CategoriesMenu = (state = {}, action) => {
+  switch(action.type) {
+    case 'CATEGORIES_MENU_CHANGE':
+      return action.categoryid
+    default:
+      return state;
+  }
+}
+
 const VideoAppHandler = combineReducers({
   currentVideo: CurrentVideo,
   videos: VideoList,
@@ -178,7 +193,8 @@ const VideoAppHandler = combineReducers({
   answerEdit: ToggleAnswerEdit,
   checkVideoDuration: CheckVideoDuration,
   videoIsValidated: VideoIsValidated,
-  authError: AuthError
+  authError: AuthError,
+  categoriesMenu: CategoriesMenu
 });
 
 export default VideoAppHandler;

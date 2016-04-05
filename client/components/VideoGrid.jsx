@@ -11,7 +11,6 @@ import GridTile from 'material-ui/lib/grid-list/grid-tile';
 export function VideoGrid({ user,videos , selectVideo, addToWatch}) {
   const styles = {
   root: {
-    display: 'flex',
     flexWrap: 'wrap',
     justifyContent: 'space-around',
  
@@ -20,21 +19,20 @@ export function VideoGrid({ user,videos , selectVideo, addToWatch}) {
     width: 1000,
     overflowY: 'auto',
     marginBottom: 15,
-   
+    fontFamily: 'Raleway'
   },
 };
 	
 	if(Object.keys(videos).length !== 0){
 		return (
-			<div id= "sheet" style={styles.root}>
-        <GridList cellHeight={220} style={styles.gridList} cols= {3} padding= {5} >
-				
-        { videos.map(function(video){
+			<div style={styles.root}>
+      <GridList cellHeight={220} style={styles.gridList} cols= {3} padding= {5} >
+       { videos.map(function(video){
           
           return <GridTile key = {video.cover} 
-          title = {video.title} subtitle= {<span>by <b>{video.description}</b></span>} actionIcon={<IconButton onMouseDown = {() => addToWatch(video,user) } ><StarBorder color="white" /></IconButton>} >
+          title = {video.title} subtitle= {<span>by {video.userName}</span>} actionIcon={<IconButton onMouseDown = {() => addToWatch(video,user) } ><StarBorder color="white" /></IconButton>} >
           <img src={video.cover} onClick = {() => selectVideo(video)} /></GridTile>;
-				
+        
         })}
         </GridList>
 			</div>	
@@ -76,13 +74,3 @@ export default connect(
   mapDispatchToProps
 )(VideoGrid);
 
-// onClick = {() => addToWatch(video,user)}
-// video = {video} selectVideo = {selectVideo}
-
-   // var style = {
-   //    'backgroundImage': (`url('${currentVideo.cover}')`),
-   //    'backgroundSize': 'cover',
-   //    'backgroundRepeat': 'no-repeat',
-   //    'backgroundPosition': '40%',
-   //    'height': '100%'
-   //  };

@@ -100,7 +100,7 @@ export const signUpUser = (user) => {
         dispatch(signInUser(user));
         dispatch(changeUser(response));
         dispatch(authError(null));
-        dispatch(hideSignInModal());
+        dispatch(hideSignUpModal());
       }, (error) =>
       {
         dispatch(authError(error.responseText));
@@ -342,5 +342,24 @@ export const videoValidatedFalse = () => {
 export const videoValidatedReset = () => {
   return {
     type: 'VIDEO_VALIDATED_RESET'
+  }
+}
+
+export const categoriesMenu = (categoryid) => {
+  return {
+    type: 'CATEGORIES_MENU_CHANGE',
+    categoryid: categoryid
+  }
+}
+
+export const startUploadProgress = () => {
+  return {
+    type: 'START_UPLOAD_PROGRESS'
+  }
+}
+
+export const stopUploadProgress = () => {
+  return {
+    type: 'STOP_UPLOAD_PROGRESS'
   }
 }

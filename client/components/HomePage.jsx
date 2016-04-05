@@ -16,6 +16,7 @@ export class HomePage extends Component {
 
   render(){
     var durationCheck = <h1>CHECKING DURATION !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!</h1>
+    console.log(window.location)
 
   	//this.props.fetchVideos();
   	return (
@@ -23,7 +24,9 @@ export class HomePage extends Component {
   	  	<div id = 'box'><Featured /></div>
         <div className="info" style={{fontFamily: 'Raleway', fontSize: '30px'}}><br/><b>Learn something new</b><br/><span style={{fontSize: '20px'}}>in five minutes or less!</span><br/></div>
           <CategoriesBar />
-      	  <VideoGrid />
+      	 <div id= "sheet" >
+          <VideoGrid />
+        </div>
         {this.props.checkVideoDuration === true ? durationCheck : ''}
   	  </div>
   	);
