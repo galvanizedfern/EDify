@@ -28,6 +28,7 @@ export class PlayerPage extends Component {
 
         <div id = 'PlayerPage'>
           <h3 class="title" style={{fontFamily: 'Raleway', fontWeight: 'bold', fontSize: '27px', marginTop: '10px', marginBottom: '0px', marginLeft: '225px'}}>{this.props.currentVideo.title}</h3>
+          <h3 class="title" style={{color: '#303F9F', fontFamily: 'Raleway', fontWeight: 'bold', fontSize: '18px', marginTop: '10px', marginBottom: '0px', marginLeft: '225px'}}>{this.props.currentVideo.userName}</h3>
           <div className='videoplayer'>
           <VideoPlayer currentVideo = {this.props.currentVideo}/>
           </div>

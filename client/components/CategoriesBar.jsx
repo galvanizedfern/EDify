@@ -54,7 +54,7 @@ export default class CategoriesBar extends React.Component {
       </ToolbarGroup>
       <ToolbarGroup float="right">
         <IconMenu
-          iconButtonElement={<svg fill="#f0f0f5" height="40" viewBox="0 0 24 24" width="40" xmlns="http://www.w3.org/2000/svg">
+          iconButtonElement={<svg style={{marginTop: '9px', marginRight: '5px'}} fill="#f0f0f5" height="40" viewBox="0 0 24 24" width="40" xmlns="http://www.w3.org/2000/svg">
               <path d="M7.41 7.84L12 12.42l4.59-4.58L18 9.25l-6 6-6-6z"/>
               <path d="M0-.75h24v24H0z" fill="none"/>
             </svg>}

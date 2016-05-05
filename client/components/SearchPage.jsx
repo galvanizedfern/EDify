@@ -11,7 +11,7 @@ export default class SearchPage extends Component {
     return (
       <div id = "SearchPage">
        <CategoriesBar />
-      <div id = 'box'><VideoGrid /></div>
+      <div id = 'sheet'><VideoGrid /></div>
       </div>
     );
   }

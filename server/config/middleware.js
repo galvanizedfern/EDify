@@ -6,12 +6,15 @@ var session = require('express-session');
 var webpack = require('webpack');
 var webpackConfig = require(process.env.WEBPACK_CONFIG ? process.env.WEBPACK_CONFIG : '../../webpack.config');
 var compiler = webpack(webpackConfig);
+var request = require('supertest');
+
 
 // Gets the proper credentials (hidden in file aws-config.json) for connecting to our S3 bucket
 var AWS = require('aws-sdk');
 AWS.config.loadFromPath(__dirname + '/aws-config.json');
 
 module.exports = function(app, express) {
+
   app.use(morgan('dev'));
 
   app.use(bodyParser.urlencoded({extended: true}));

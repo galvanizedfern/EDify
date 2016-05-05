@@ -10,6 +10,7 @@ module.exports = {
       description: video.description,
       cover: video.cover,
       url: video.url,
+      userName: video.user.username,
       UserId: video.user.id,
       CategoryId: video.categoryId
     })

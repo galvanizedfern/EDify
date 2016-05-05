@@ -11,8 +11,8 @@ import {connect} from 'react-redux';
 import ReactS3Uploader from 'react-s3-uploader';
 import VideoDurationValidater from './VideoDurationValidater.jsx'
 
-import { addVideo, hideUploadModal, loadCategories, startVideoDurationCheck, stopVideoDurationCheck } from '../actions/actions.jsx';
-import { videoValidatedTrue, videoValidatedFalse, videoValidatedReset } from '../actions/actions.jsx';
+import { addVideo, hideUploadModal, loadCategories, startVideoDurationCheck, stopVideoDurationCheck, videoValidatedTrue } from '../actions/actions.jsx';
+import { videoValidatedFalse, videoValidatedReset, categoriesMenu, startUploadProgress, stopUploadProgress } from '../actions/actions.jsx';
 
 export default class UploadModal extends Component {
 
@@ -31,6 +31,12 @@ export default class UploadModal extends Component {
     var videoValidatedTrue = this.props.videoValidatedTrue;
     var videoValidatedFalse = this.props.videoValidatedFalse;
     var videoValidatedReset = this.props.videoValidatedReset;
+    var categoriesMenu = this.props.categoriesMenu;
+    var categorySelected = this.props.categorySelected;
+    var startUploadProgress = this.props.startUploadProgress;
+    var stopUploadProgress = this.props.stopUploadProgress;
+    var processing = this.props.checkVideoDuration.proccessing;
+    console.log(processing);
 
 
     const items = [];
@@ -47,14 +53,8 @@ export default class UploadModal extends Component {
       maxWidth: 'none',
     };
 
-    // add snackbar for when video is finished uploading?
-    // add progress bar while video is uploading?
 
-    let videoUrl;
     let coverUrl;
-    let categoryId;
-
-    categoryId = 1;
 
     const actions = [
       <FlatButton
@@ -63,6 +63,8 @@ export default class UploadModal extends Component {
         onClick={() => {
           closeModal();
           videoValidatedReset();
+          categoriesMenu({});
+          stopUploadProgress();
         }}
       />,
       <FlatButton
@@ -70,8 +72,9 @@ export default class UploadModal extends Component {
         disabled={videoIsValidated === true ? false : true}
         style={{color: '#303F9F'}}
         onClick={() => {
-          submitVideo({title: this.refs.title.getValue(), description: this.refs.description.getValue(), cover: coverUrl, user: user, url: videoUrl, categoryId: categoryId});
+          submitVideo({title: this.refs.title.getValue(), description: this.refs.description.getValue(), cover: coverUrl, user: user, url: videoURL, categoryId: categorySelected});
           videoValidatedReset();
+          categoriesMenu({});
         }}
       />
     ];
@@ -98,18 +101,26 @@ export default class UploadModal extends Component {
           />
           Categories
           <DropDownMenu maxHeight={300}
-            value={categoryId}
-            onChange={(evt, index, item) => {categoryId = item}}
+            value={typeof categorySelected === 'object' ? 1 : categorySelected}
+            onChange={(evt, index, item) => {
+              categoriesMenu(item);
+            }}
             ref="category">
             {items}
           </DropDownMenu>
           <div><h4 className="uploadTitle">Video File (.mp4)</h4>
           <ReactS3Uploader  
             signingUrl="/s3/sign"
+            onProgress={(percent) => {
+              if (percent > 0 && percent < 20) {
+                startUploadProgress();
+              }
+            }}
             onFinish={(videoResponse) => {
               var filename = videoResponse.filename;
-              videoUrl = 'https://s3-us-west-1.amazonaws.com/video.bucket1/' + filename;
-              startVideoDurationCheck(videoUrl, filename);
+              videoURL = 'https://s3-us-west-1.amazonaws.com/video.bucket1/' + filename;
+              startVideoDurationCheck(videoURL, filename);
+              stopUploadProgress();
             }}
           /></div>
           {videoIsValidated === true ? 
@@ -121,8 +132,11 @@ export default class UploadModal extends Component {
                 coverUrl = 'https://s3-us-west-1.amazonaws.com/video.bucket1/' + coverResponse.filename;
               }}
             /></div>) : videoIsValidated === false ?
-            (<span>Your video was too long! Only videos under 5 minutes long may be uploaded. </span>)
+            (<span>Your video was too long! Only videos under 5 minutes long may be uploaded.</span>)
             : ""}
+          {processing === true ? 
+          (<span>Processing video...</span>)
+          : ""}
         </Dialog>
         <div id='durationCheck' >
           {checking === true ?
@@ -146,7 +160,8 @@ const mapStateToProps = (state) => {
     user: state.user,
     categories: state.categories,
     checkVideoDuration: state.checkVideoDuration,
-    videoIsValidated: state.videoIsValidated
+    videoIsValidated: state.videoIsValidated,
+    categorySelected: state.categoriesMenu
   }
 };
 
@@ -175,6 +190,15 @@ const mapDispatchToProps = (dispatch) => {
     },
     videoValidatedReset: () => {
       dispatch(videoValidatedReset());
+    },
+    categoriesMenu: (id) => {
+      dispatch(categoriesMenu(id));
+    },
+    startUploadProgress: () => {
+      dispatch(startUploadProgress());
+    },
+    stopUploadProgress: () => {
+      dispatch(stopUploadProgress());
     }
   };
 };

@@ -1,5 +1,5 @@
 var express = require('express');
-var db = require('./db');
+// var db = require('./db');
 var path = require('path');
 
 var app = express();
@@ -12,4 +12,4 @@ app.listen(port, function() {
   console.log(`Listening on port ${port}...`);
 });
 
-exports = app;
+module.exports = app;
