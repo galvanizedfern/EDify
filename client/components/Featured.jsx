@@ -15,6 +15,9 @@ export default function Featured({videos, selectVideo}) {
     var vidLength = videos.length;
     var currentVideo1 = videos[Math.floor(Math.random()*vidLength)];
     var currentVideo2 = videos[Math.floor(Math.random()*vidLength)];
+    while (currentVideo2 === currentVideo1) {
+      currentVideo2 = videos[Math.floor(Math.random()*vidLength)];
+    };
 
 	  return(
 	  	
