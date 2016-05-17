@@ -7,7 +7,7 @@ var app = express();
 require('./config/middleware')(app, express);
 require('./config/routes')(app, express);
 
-var port = Number(process.env.PORT || 8000);
+var port = Number(process.env.PORT || 80);
 app.listen(port, function() {
   console.log(`Listening on port ${port}...`);
 });

@@ -1,0 +1,4 @@
+.gitignore
+Dockerrun.aws.json
+node_modules
+	

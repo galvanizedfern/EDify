@@ -8,7 +8,7 @@ module.exports = {
   ],
   output: {
     path: path.resolve(__dirname, 'client'),
-    publicPath: 'http://localhost:8000/',
+    //publicPath: 'http://localhost:8000/',
     filename: "bundle.js",
   },
   devtool: '#source-map',
